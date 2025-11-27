@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Google Maps Mockup</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- React 18 -->
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- lucide-react UMD 版本 -->
+  <script src="https://unpkg.com/lucide-react/dist/umd/lucide-react.min.js"></script>
+
+</head>
+<body class="bg-gray-100">
+
+<div id="root"></div>
+
+<script type="text/javascript">
+  const { useState } = React;
+  const {
+    Star, MapPin, Phone, Globe, Clock, Share2, Bookmark, Navigation,
+    Search, Menu, X, MessageCircle, ThumbsUp, Image: ImageIcon
+  } = lucideReact;
+
+  function ActionButton({ icon, label, active = false }) {
+    return (
+      React.createElement("button", {
+        className: `flex flex-col items-center justify-center min-w-[60px] py-1 ${active ? 'text-blue-600' : 'text-blue-500 hover:text-blue-700'}`
+      },
+        React.createElement("div", {
+          className: `p-2 rounded-full border ${active ? 'bg-blue-600 text-white border-blue-600' : 'border-blue-500'}`
+        }, icon),
+        React.createElement("span", { className: "text-xs mt-1 font-medium" }, label)
+      )
+    );
+  }
+
+  function GoogleMapsMockup() {
+    const [activeTab, setActiveTab] = useState('overview');
+
+    const businessData = {
+      name: "全齡輔具體驗展示中心 | 輪椅・電動床・長照補助諮詢",
+      rating: 4.9,
+      reviewCount: 486,
+      category: "醫療器材供應商",
+      address: "704台南市東區長榮路四段",
+      phone: "07-123-4567",
+      website: "www.anju-care-demo.com",
+      hours: "營業中 ⋅ 打烊時間：21:00",
+      description: "【專業親切，體驗環境舒適】現場展示多款人體工學輪椅、居家電動護理床。駐點物理治療師提供免費適配評估。專人協助辦理長照 2.0 輔具補助申請。歡迎預約試躺體驗。",
+      attributes: ["提供無障礙入口", "設有性別友善廁所", "需預約參觀", "提供到府評估"],
+      posts: [
+        {
+          id: 1,
+          date: "2 天前",
+          title: "👴 長照 2.0 補助申請教學講座",
+          content: "搞不懂輔具補助怎麼申請嗎？本週末下午 2 點，我們邀請專業社工師現場解說，教您如何省下最高 70% 的輔具費用！名額有限，請私訊報名。",
+          imageColor: "bg-orange-100",
+          action: "立即報名"
+        },
+        {
+          id: 2,
+          date: "5 天前",
+          title: "新品上市：超輕量碳纖維輪椅",
+          content: "重量僅 8.9 公斤！適合頻繁外出就醫、旅遊的長輩。獨家避震系統，歡迎帶家中長輩來現場試乘。",
+          imageColor: "bg-blue-100",
+          action: "查看詳情"
+        }
+      ],
+      reviews: [
+        {
+          id: 1,
+          user: "陳小美",
+          rating: 5,
+          time: "2 週前",
+          text: "帶爸爸來挑選**電動護理床**，店員非常專業，詳細解說了**三馬達**和**二馬達**的差別。現場還可以直接試躺，最後我們選了適合爸爸脊椎支撐的款式。店長還主動教我們怎麼申請**長照補助**，省了不少錢，大推！",
+          response: "業主回覆：謝謝陳小姐的詳細評論！很高興爸爸能挑到滿意的電動床。若後續有申請長照補助的核銷
